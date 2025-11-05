@@ -1,0 +1,2 @@
+from .video_reader_pipe_v2 import VideoReaderPipelineV2 as VideoReaderPipeline
+from .image_reader_pipe_v2 import ImageReaderPipelineV2 as ImageReaderPipeline

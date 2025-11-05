@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="image-analysis">
+        <h2>{% if lang == 'zh' %}图像分析{% else %}Image Analysis{% endif %}</h2>
+        
+        <div class="analysis-options">
+            <div class="option">
+                <h3>{% if lang == 'zh' %}上传图片{% else %}Upload Image{% endif %}</h3>
+                <form method="post" enctype="multipart/form-data" class="upload-form">
+                    <div class="form-group">
+                        <label for="file">
+                            {% if lang == 'zh' %}选择图像文件:{% else %}Select image file:{% endif %}
+                        </label>
+                        <input type="file" name="file" id="file" accept="image/*" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <button type="submit" class="btn">
+                            {% if lang == 'zh' %}上传并分析{% else %}Upload & Analyze{% endif %}
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="option">
+                <h3>{% if lang == 'zh' %}拍照分析{% else %}Capture Photo{% endif %}</h3>
+                <div class="camera-container">
+                    <video id="camera" autoplay playsinline style="display: none;"></video>
+                    <canvas id="canvas" style="display: none;"></canvas>
+                    
+                    <div id="camera-view" class="camera-view">
+                        {% if lang == 'zh' %}
+                            <p>点击下方按钮启用摄像头</p>
+                        {% else %}
+                            <p>Click the button below to enable camera</p>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="camera-controls">
+                        <button id="start-camera" class="btn">
+                            {% if lang == 'zh' %}启动摄像头{% else %}Start Camera{% endif %}
+                        </button>
+                        <button id="capture-btn" class="btn" disabled>
+                            {% if lang == 'zh' %}拍照{% else %}Capture{% endif %}
+                        </button>
+                    </div>
+                </div>
+                
+                <form id="camera-form" method="post" enctype="multipart/form-data" style="display: none;">
+                    <input type="file" name="file" id="camera-file">
+                    <button type="submit" id="analyze-btn" class="btn">
+                        {% if lang == 'zh' %}分析照片{% else %}Analyze Photo{% endif %}
+                    </button>
+                </form>
+            </div>
+        </div>
+        
+        {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+        
+        {% if image_path %}
+            <div class="results">
+                <div class="image-preview">
+                    <h3>{% if lang == 'zh' %}分析图像{% else %}Analyzed Image{% endif %}</h3>
+                    <img src="{{ url_for('static', filename=image_path.split('static/')[-1]) }}" alt="Analyzed Image">
+                </div>
+                
+                <div class="analysis-result">
+                    <h3>{% if lang == 'zh' %}详细描述{% else %}Detailed Description{% endif %}</h3>
+                    <p>{{ script_text }}</p>
+                    
+                    {% if audio_path %}
+                        <h3>{% if lang == 'zh' %}语音描述{% else %}Audio Description{% endif %}</h3>
+                        <audio controls>
+                            <source src="{{ url_for('static', filename=audio_path) }}" type="audio/mpeg">
+                            {% if lang == 'zh' %}您的浏览器不支持音频元素。{% else %}Your browser does not support the audio element.{% endif %}
+                        </audio>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

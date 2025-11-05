@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <section class="video-analysis">
+        <h2>{% if lang == 'zh' %}视频分析{% else %}Video Analysis{% endif %}</h2>
+        
+        <form method="post" enctype="multipart/form-data" class="upload-form">
+            <div class="form-group">
+                <label for="file">
+                    {% if lang == 'zh' %}选择视频文件:{% else %}Select video file:{% endif %}
+                </label>
+                <input type="file" name="file" id="file" accept="video/*" required>
+            </div>
+            
+            <div class="form-group">
+                <button type="submit" class="btn">
+                    {% if lang == 'zh' %}上传并分析{% else %}Upload & Analyze{% endif %}
+                </button>
+            </div>
+        </form>
+        
+        {% if error %}
+            <div class="error">
+                <p>{{ error }}</p>
+            </div>
+        {% endif %}
+        
+        {% if video_path %}
+            <div class="results">
+                <div class="video-preview">
+                    <h3>{% if lang == 'zh' %}上传的视频{% else %}Uploaded Video{% endif %}</h3>
+                    <video controls width="400">
+                        <source src="{{ url_for('static', filename=video_path.split('static/')[-1]) }}" type="video/mp4">
+                        {% if lang == 'zh' %}您的浏览器不支持视频元素。{% else %}Your browser does not support the video element.{% endif %}
+                    </video>
+                </div>
+                
+                <div class="analysis-result">
+                    <h3>{% if lang == 'zh' %}视频故事{% else %}Video Story{% endif %}</h3>
+                    <p>{{ story }}</p>
+                
+                    
+                    <h3>{% if lang == 'zh' %}视频信息{% else %}Video Info{% endif %}</h3>
+                    <p>{{ video_info }}</p>
+                    
+                    {% if audio_path %}
+                        <h3>{% if lang == 'zh' %}语音描述{% else %}Audio Description{% endif %}</h3>
+                        <audio controls>
+                            <source src="{{ url_for('static', filename=audio_path) }}" type="audio/mpeg">
+                            {% if lang == 'zh' %}您的浏览器不支持音频元素。{% else %}Your browser does not support the audio element.{% endif %}
+                        </audio>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+    </section>
+{% endblock %}

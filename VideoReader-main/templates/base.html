@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        {% if lang == 'zh' %}多智能体视频理解与文本/语音转述系统{% else %}Multi-agent Video Understanding and Text/Speech Paraphrasing System{% endif %}
+    </title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header-left">
+            <a href="{{ url_for('index', lang=lang) }}" class="home-btn">
+                {% if lang == 'zh' %}主页{% else %}Home{% endif %}
+            </a>
+        </div>
+        <h1>
+            {% if lang == 'zh' %}多智能体视频理解与文本/语音转述系统{% else %}Multi-agent Video Understanding and Text/Speech Paraphrasing System{% endif %}
+        </h1>
+        <div class="header-right">
+            <a href="{{ url_for('switch_language', current_lang=lang, next=request.endpoint) }}" class="language-btn">
+                {% if lang == 'zh' %}English{% else %}中文{% endif %}
+            </a>
+        </div>
+    </header>
+    
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+    <footer>
+        <p>
+            {% if lang == 'zh' %}© 2025 多智能体系统. 保留所有权利。{% else %}© 2025 Multi-agent System. All rights reserved.{% endif %}
+        </p>
+    </footer>
+    
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>

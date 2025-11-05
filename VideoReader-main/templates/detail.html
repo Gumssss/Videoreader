@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if lang == 'zh' %}系统内部工作原理{% else %}System Internals Details{% endif %}
+
+{% if lang == 'zh' %}
+本系统采用多智能体架构，将图片和视频内容逐步转换为文本和语音。以下各核心模块依次协同，支撑完整的多模态处理流程。
+{% else %}
+The system utilizes a multi-agent architecture to convert images and videos into text and audio. The following core modules work in sequence to support the complete multimodal processing workflow.
+{% endif %}
+
+<div class="module-list">
+        <details class="module-item">
+            <summary>{% if lang == 'zh' %}图片理解与描述模块{% else %}Image Understanding & Captioning{% endif %}</summary>
+            <div class="module-content">
+                <p>
+                    {% if lang == 'zh' %}
+                    该模块基于深度学习模型对上传图片进行预处理、特征提取和语言模型推理，最终生成准确的图像描述（caption）。
+                    {% else %}
+                    This module preprocesses uploaded images, extracts features, and performs language model inference to generate precise captions.
+                    {% endif %}
+                </p>
+            </div>
+        </details>
+
+        <details class="module-item">
+            <summary>{% if lang == 'zh' %}脚本生成模块{% else %}Script Generation Module{% endif %}</summary>
+            <div class="module-content">
+                <p>
+                    {% if lang == 'zh' %}
+                    本模块接收图像描述或视频帧文本，调用大型语言模型（如 Qwen3-4B）组织连贯叙事并生成完整脚本文本。
+                    {% else %}
+                    This module takes image captions or video frame descriptions and uses a large language model (e.g., Qwen3-4B) to produce a coherent narrative script.
+                    {% endif %}
+                </p>
+            </div>
+        </details>
+
+        <details class="module-item">
+            <summary>{% if lang == 'zh' %}文本转语音模块{% else %}Text-to-Speech Module{% endif %}</summary>
+            <div class="module-content">
+                <p>
+                    {% if lang == 'zh' %}
+                    使用高性能 TTS 引擎（如 Kokoro）将脚本转换为自然流畅的音频，支持多语言和可配置语速。
+                    {% else %}
+                    Employs a high-performance TTS engine (e.g., Kokoro) to convert scripts into natural-sounding audio, supporting multiple languages and configurable speech rates.
+                    {% endif %}
+                </p>
+            </div>
+        </details>
+
+        <details class="module-item">
+            <summary>{% if lang == 'zh' %}帧选择与视频处理模块{% else %}Frame Selection & Video Processing{% endif %}</summary>
+            <div class="module-content">
+                <p>
+                    {% if lang == 'zh' %}
+                    对视频输入，首先通过帧选择模块筛选关键帧，然后依次调用图像理解和脚本生成模块，实现视频到音频的端到端转换。
+                    {% else %}
+                    For video inputs, the frame selection module picks key frames, then the image understanding and script generation modules process them to complete an end-to-end video-to-audio transformation.
+                    {% endif %}
+                </p>
+            </div>
+        </details>
+    </div>
+
+    <p class="note">
+        {% if lang == 'zh' %}
+        模块间通过统一接口协议通信，所有中间结果（描述文本、脚本、音频路径）均可缓存追溯，便于调试和系统扩展。
+        {% else %}
+        Modules communicate via unified interfaces, and all intermediate outputs (captions, scripts, audio paths) are cached for traceability, debugging, and system expansion.
+        {% endif %}
+    </p>
+
+    <a href="/{{ 'zh' if lang == 'zh' else '' }}" class="btn-back">
+        {% if lang == 'zh' %}返回首页{% else %}Back to Home{% endif %}
+    </a>
+</section>
+{% endblock %}

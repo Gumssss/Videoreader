@@ -1,0 +1,241 @@
+/* 基础样式 */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    color: #333;
+    background-color: #f5f5f5;
+}
+
+header {
+    background-color: #2c3e50;
+    color: white;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+
+
+
+.header-left, .header-right {
+    flex: 1;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    text-align: center;
+    flex: 2;
+}
+
+.home-btn, .language-btn {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    background-color: #3498db;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.home-btn:hover, .language-btn:hover {
+    background-color: #2980b9;
+}
+
+.header-left {
+    text-align: left;
+}
+
+.header-right {
+    text-align: right;
+}
+
+/* 响应式设计 - 小屏幕调整 */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        padding: 0.5rem;
+    }
+    
+    header h1 {
+        font-size: 1.2rem;
+        margin: 0.5rem 0;
+        order: -1;
+    }
+    
+    .header-left, .header-right {
+        width: 100%;
+        text-align: center;
+        margin: 0.5rem 0;
+    }
+}
+main {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: #2c3e50;
+    color: white;
+}
+
+/* 按钮样式 */
+.btn {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #2980b9;
+}
+
+/* 首页样式 */
+.intro {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.features {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.feature {
+    flex: 1;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 表单样式 */
+.upload-form {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group input[type="file"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+/* 结果样式 */
+.results {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+.image-preview, .video-preview {
+    flex: 1;
+}
+
+.analysis-result {
+    flex: 2;
+}
+
+.image-preview img, .video-preview video {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.error {
+    color: #e74c3c;
+    background-color: #fadbd8;
+    padding: 1rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .features {
+        flex-direction: column;
+    }
+    
+    .results {
+        flex-direction: column;
+    }
+}
+.analysis-options {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.option {
+    flex: 1;
+    padding: 1.5rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.camera-container {
+    margin-top: 1rem;
+}
+
+.camera-view {
+    width: 100%;
+    height: 300px;
+    background-color: #eee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1rem;
+    border-radius: 4px;
+}
+
+.camera-controls {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+}
+
+#camera, #canvas {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .analysis-options {
+        flex-direction: column;
+    }
+}
+3. 更新 JavaScript
