@@ -4,7 +4,7 @@
 ### Setup environment
 ```bash
 pip install Flask transformers pillow soundfile kokoro
-git clone https://github.com/JasonZuu/Image2Audio
+git clone https://github.com/Gumssss/Videoreader
 cd Image2Audio
 ```
 
