@@ -5,60 +5,89 @@ A full-stack multimodal system that converts images and videos into structured c
 一个将图像与视频转换为字幕、完整叙事文本与自然语音的端到端多模态系统。
 
 
-**Table of Contents**
-**目录**
-
-Overview / 项目概述
-Features / 功能特色
-System Architecture / 系统架构
-Tech Stack / 技术栈
-Project Structure / 项目结构
-Installation / 安装
-Run the Web App / 运行 Web 应用
-Pipelines / 流水线设计
-Module Details / 模块说明
-Examples / 使用示例
 
 
-**Overview | 项目概述**
+Overview | 项目概述
 
 This project is a multi-agent multimodal intelligence system that processes both images and videos.
 It generates:
 
--Captions (BLIP Image Captioning)
--Coherent stories (Qwen 3-4B LLM)
--Natural speech audio (Kokoro TTS)
--Frame selection for videos (difference-based scoring)
+Captions (BLIP Image Captioning)
+
+Coherent stories (Qwen 3-4B LLM)
+
+Natural speech audio (Kokoro TTS)
+
+Frame selection for videos (difference-based scoring)
+
 
 本项目是一个 面向图像与视频的多智能体多模态系统，可自动完成：
 
--图像字幕生成（BLIP）
--剧情扩写 / 连贯故事生成（Qwen 3-4B）
--自然语音合成（Kokoro TTS）
--视频关键帧选取（差分评分算法）
+图像字幕生成（BLIP）
+
+剧情扩写 / 连贯故事生成（Qwen 3-4B）
+
+自然语音合成（Kokoro TTS）
+
+视频关键帧选取（差分评分算法）
 
 并提供 完整的 Web 前端界面（Flask），支持文件上传、语言切换（中英）、音频下载等功能。
 
+✨ Features | 功能特色
+🔹 Image Processing | 图像处理
 
+Upload image
 
-**System Architecture | 系统架构**
+BLIP captioning
 
+Story generation via Qwen
+
+TTS output (EN/CH)
+
+Web UI preview
+
+🔹 Video Processing | 视频处理
+
+Upload video
+
+Automatic frame extraction
+
+Caption each selected frame
+
+Generate full story based on all frames
+
+Output narration audio
+
+🔹 Web Application | 网页应用
+
+Upload & preview
+
+English / Chinese UI
+
+Auto-clean temp files
+
+Download MP3
+
+🔹 Modular Multi-Agent Pipeline | 模块化多智能体流水线
+Agents:
+
+ImageConverter — BLIP caption generator
+
+FrameSelector — extract top-N frames
+
+StoryTeller — LLM narrative builder
+
+TextReader — TTS pipeline
+
+ImageReaderPipeline & VideoReaderPipeline orchestrate everything
+
+🧱 System Architecture | 系统架构
 User Upload → Flask Web UI
-    ↓
-Pipeline
-    ↓
-[FrameSelector]  →  Select top frames (video only)
-[ImageConverter] →  BLIP captions
-[StoryTeller]    →  Story generation (Qwen 3-4B)
-[TextReader]     →  TTS audio synthesis (Kokoro)
-    ↓
-Output: Caption + Story + MP3
-
 
 核心流程：
 视觉 → 文本 → 故事 → 语音
 
-**Tech Stack | 技术栈**
+🛠 Tech Stack | 技术栈
 Component	Library / Model
 Captioning	Salesforce BLIP
 Story Generation	Qwen 3-4B
@@ -67,7 +96,6 @@ Web	Flask + Jinja2
 Video Processing	OpenCV
 Image Processing	Pillow
 Backend	Python 3.8+
-
 📁 Project Structure | 项目结构
 project/
 │
@@ -212,4 +240,4 @@ Salesforce BLIP
 
 Qwen/Qwen3-4B
 
-Kokoro TTS**
+Kokoro TTS
