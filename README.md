@@ -9,8 +9,8 @@
 
 ```bash
 pip install -r requirements.txt
-git clone <your-repo-url>
-cd <your-project-folder>
+git clone https://github.com/Gumssss/Videoreader
+cd Videoreader
 ```
 
 ### Run the code
