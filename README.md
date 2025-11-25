@@ -1,6 +1,6 @@
 # Multi-Agent Image & Video Reader<br>多智能体视频与图像理解系统
 
-## A full-stack multimodal system that converts images and videos into structured captions, coherent stories, and natural speech audio.<br>一个将图像与视频转换为字幕、完整叙事文本与自然语音的端到端多模态系统。
+## A full-stack multimodal system that converts images and videos into structured captions, coherent stories, and natural speech audio.<br><br>一个将图像与视频转换为字幕、完整叙事文本与自然语音的端到端多模态系统。
 
 
 ## Usage
